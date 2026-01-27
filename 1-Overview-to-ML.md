@@ -1,5 +1,17 @@
 # Machine Learning & Deep Learning — Conceptual Overview
 
+## Table of Contents
+- [1. Machine Learning (ML)](#1-machine-learning-ml)
+- [2. Supervised Learning](#2-supervised-learning)
+- [3. Unsupervised Learning](#3-unsupervised-learning)
+- [4. Reinforcement Learning (RL)](#4-reinforcement-learning-rl)
+- [5. Deep Learning (DL)](#5-deep-learning-dl)
+- [6. Neural Networks](#6-neural-networks)
+- [7. Convolutional Neural Networks (CNNs)](#7-convolutional-neural-networks-cnns)
+- [8. Recurrent Neural Networks (RNNs)](#8-recurrent-neural-networks-rnns)
+- [9. Transformers](#9-transformers)
+- [10. Mamba](#10-mamba)
+
 ---
 
 ## 1. Machine Learning (ML)
