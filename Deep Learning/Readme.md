@@ -1,15 +1,13 @@
 # Deep Learning
 
-1. Deep Learning is Possible because of GPU and TPU
+Deep Learning needs GPU/TPU to work efficiently.
 
 ## Popular Frameworks
-
-1. Pytorch (Facebook)
-2. Tensorflow (Google)
+- PyTorch (Facebook)
+- TensorFlow (Google)
 
 ## Neuron
 
-- Logistic Regresison is Like a Single Neuron
-  - why ?
-    - step 1: y = mx + c (we find m and c using algorithm)
-    - step 2: give y to signmoid so that we decide 0 or 1 (Activation function)
+Logistic Regression = Single Neuron
+- Step 1: Calculate y = mx + c
+- Step 2: Use Sigmoid to get 0 or 1 (Activation Function)
