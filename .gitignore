@@ -7,3 +7,4 @@ __pycache__/
 *.log
 
 .ipynb_checkpoints/*.sf2
+Deep Learning/models/RNN/music/FluidR3_GM.sf2
