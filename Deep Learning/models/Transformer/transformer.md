@@ -42,3 +42,44 @@
 - **Final Embedding:** Gives the final contextual embedding for the exact word it needs to generate right now.
 - **MLP / Linear Layer:** Passes this embedding through a dense layer that matches your total **Vocabulary Size**.
 - **Softmax (Prediction):** Converts the output into probabilities. The word with the **highest probability** is selected as the next predicted word!
+
+## Why Normalization?
+
+- While **Kaiming** and **Xavier** weight initializations help prevent exploding/vanishing gradients at the start, continuous weight updates during training can still cause layer outputs to become unstable (too huge or too small).
+- We use normalization to balance these outputs dynamically during training.
+- **Standard Flow:** `Weighted Sum -> Normalization -> Activation`
+- Ultimately, normalization ensures stable, faster training and acts as a constant safeguard against gradient problems.
+
+## Types of Normalization
+
+### 1. Batch Normalization (Batch Norm)
+- **Best For:** Convolutional Neural Networks (CNNs).
+- **Mechanism:** Normalizes **vertically** (feature-wise, across the entire batch).
+
+**A. During Training:**
+- Calculates the mean ($\mu_{\text{batch}}$) and variance ($\sigma_{\text{batch}}^2$) directly from the **current mini-batch**.
+- **Formula:** 
+  $$ y_i = \gamma \left( \frac{x_i - \mu_{\text{batch}}}{\sqrt{\sigma_{\text{batch}}^2 + \epsilon}} \right) + \beta $$
+- **Running Stats & Momentum:** During training, it also calculates a **global** mean and variance (`running_mean`, `running_var`) using an Exponential Moving Average. 
+  - The **momentum** controls how much the current batch updates this global average.
+  - $\text{running\_mean} = (1 - \text{momentum}) \times \text{running\_mean} + \text{momentum} \times \mu_{\text{batch}}$
+
+**B. During Prediction (Inference/Testing):**
+- In testing, your batch size might just be 1. Calculating a mean of a single image doesn't make sense!
+- So, it completely ignores the batch statistics and uses the **running statistics** gathered during training.
+- **Formula:** 
+  $$ y_i = \gamma \left( \frac{x_i - \text{running\_mean}}{\sqrt{\text{running\_var} + \epsilon}} \right) + \beta $$
+
+**Key Variables:**
+- $\gamma$ (Scale) & $\beta$ (Shift): Learnable parameters optimized during training.
+- $\epsilon$: A tiny constant (e.g., $10^{-5}$) to prevent division by zero.
+
+### 2. Layer Normalization (Layer Norm)
+- **Best For:** Transformers and RNNs.
+- **Mechanism:** Normalizes **horizontally** (sample-wise, across all features for a single input).
+- **Formula:**
+  $$ y_i = \gamma \left( \frac{x_i - \mu_{\text{sample}}}{\sqrt{\sigma_{\text{sample}}^2 + \epsilon}} \right) + \beta $$
+  - $x_i$: The input vector (weighted sum) for one sample.
+  - $\mu_{\text{sample}}$: Mean of all features for that specific sample.
+  - $\sigma_{\text{sample}}^2$: Variance of all features for that specific sample.
+  - $\gamma$ & $\beta$: Learnable parameters optimized during training to scale and shift the output.
