@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-## Self Supervised Word Embedding
-
-## Types
-
-1.CBOW (Continuous Bag of Words)
-
-- (Context -> Word)
-
-2. Skip-Gram
-
-- (Word -> Context)
-=======
 # Self-Supervised Word Embeddings
 
 Self-supervised word embeddings are pretrained representation learning techniques that discover rich semantic and syntactic relationships from massive, unannotated text corpora without requiring manual human labels.
@@ -179,4 +166,3 @@ vector_ft_oov = ft_model.wv['learnings']
 print("Word2Vec vector shape:", vector_w2v.shape)
 print("FastText OOV vector shape:", vector_ft_oov.shape)
 ```
->>>>>>> 0fbc6b0b6a6b3b5e9cfb8d4fcfd91eea1d2fab86

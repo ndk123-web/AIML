@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-## Contextualize Word Embedding
-
-## What the fukc is porblem with the static-embedding ?
-
-- See assume example there are 2 sentences
-  - circle is rolling
-  - this human in rolling
-
-  - Here word rolling has separate meaning according to words but static would give me same embedding for both sentence
-    that's why `contextualize embedding` comesn
-
-## Example
-
-1. Bert
-- It gives contextualized word embedding
-=======
 # Contextualized Word Embeddings
 
 Contextualized word embeddings generate dynamic vector representations of words based on their surrounding context within a sequence, completely resolving the fundamental polysemy limitation of static word embeddings.
@@ -181,4 +164,3 @@ cos_sim = torch.nn.functional.cosine_similarity(emb_bank_financial, emb_bank_riv
 print(f"Cosine Similarity between 'bank' in financial vs river context: {cos_sim.item():.4f}")
 # Output will be significantly lower than 1.0 (e.g. ~0.55), proving context differentiation!
 ```
->>>>>>> 0fbc6b0b6a6b3b5e9cfb8d4fcfd91eea1d2fab86
